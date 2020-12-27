@@ -18,16 +18,20 @@ const colors = [
 
   startBtn.addEventListener("click", (num) => {
     setInt = setInterval(() => {
-        num = randomIntegerFromInterval(0, 5);
+        num = randomIntegerFromInterval(0, colors.length - 1);
         body.style.backgroundColor = colors[num];
     }, 1000);
-    startBtn.classList.toggle('nonactive'); 
+  startBtn.classList.toggle('nonactive'); 
+  stopBtn.removeAttribute('disabled');
+  startBtn.setAttribute('disabled', true);
   });
 
   stopBtn.addEventListener("click", () => {
-    startBtn.classList.toggle('nonactive');
-    body.style.backgroundColor = '';  
-    clearInterval(setInt);
+  stopBtn.classList.toggle('nonactive');
+  startBtn.removeAttribute('disabled');
+  stopBtn.setAttribute('disabled', true);  
+  body.style.backgroundColor = '';  
+  clearInterval(setInt);
     
   });
 
